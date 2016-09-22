@@ -8,15 +8,25 @@
 
 import UIKit
 import CoreData
+import ReSwift
+
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var mainStore: Store<AppState>!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let users = User.fetch(moc: persistentContainer.viewContext)
+        mainStore = Store<AppState>(reducer: AppReducer(), state: AppState(users: users))
+        
         return true
     }
 

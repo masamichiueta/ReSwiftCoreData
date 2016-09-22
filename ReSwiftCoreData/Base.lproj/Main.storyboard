@@ -34,22 +34,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="3zs-Un-Fep" detailTextLabel="kyG-ws-iKJ" style="IBUITableViewCellStyleSubtitle" id="ua1-hj-emy">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="3zs-Un-Fep" detailTextLabel="kyG-ws-iKJ" style="IBUITableViewCellStyleSubtitle" id="ua1-hj-emy">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ua1-hj-emy" id="Brk-cP-GFv">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="342" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3zs-Un-Fep">
-                                            <frame key="frameInset" minX="15" minY="4" width="34" height="21"/>
+                                            <frame key="frameInset" minX="15" minY="5" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kyG-ws-iKJ">
-                                            <frame key="frameInset" minX="15" minY="25" width="44" height="15"/>
+                                            <frame key="frameInset" minX="15" minY="25.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -58,7 +58,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="ly5-ES-Bq6" kind="show" id="htG-zC-9tN"/>
+                                    <segue destination="ly5-ES-Bq6" kind="show" identifier="Show" id="htG-zC-9tN"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -67,16 +67,22 @@
                             <outlet property="delegate" destination="OBC-dZ-tfB" id="QY9-EH-8xK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="aBN-i1-AJL"/>
+                    <navigationItem key="navigationItem" id="aBN-i1-AJL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="B8i-VA-7dJ">
+                            <connections>
+                                <action selector="addButtonDidTap:" destination="OBC-dZ-tfB" id="FaI-Hq-yUn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYx-xI-Qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="977" y="-544"/>
         </scene>
-        <!--View Controller-->
+        <!--Title-->
         <scene sceneID="D1S-7h-eeu">
             <objects>
-                <viewController id="ly5-ES-Bq6" sceneMemberID="viewController">
+                <viewController id="ly5-ES-Bq6" customClass="DetailViewController" customModule="ReSwiftCoreData" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8eY-3d-1Ab"/>
                         <viewControllerLayoutGuide type="bottom" id="hbR-fC-CbJ"/>
@@ -89,7 +95,7 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="274-MF-p21">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0M-tX-Ldg">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A0M-tX-Ldg">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -98,6 +104,11 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="nameTextDidChange:" destination="ly5-ES-Bq6" eventType="valueChanged" id="Ye7-b4-K3U"/>
+                                                    <action selector="nameTextFieldEditingChanged:" destination="ly5-ES-Bq6" eventType="editingChanged" id="KzQ-oA-abw"/>
+                                                    <outlet property="delegate" destination="ly5-ES-Bq6" id="n2V-DZ-QTi"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -109,7 +120,7 @@
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="b5L-f3-r6W">
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVc-N4-AZm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVc-N4-AZm">
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -118,6 +129,10 @@
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="ageTextFieldEditingChanged:" destination="ly5-ES-Bq6" eventType="editingChanged" id="QVf-nd-mxP"/>
+                                                    <outlet property="delegate" destination="ly5-ES-Bq6" id="cNm-HX-S7B"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -137,6 +152,18 @@
                             <constraint firstItem="cZb-n6-3bN" firstAttribute="leading" secondItem="Y4j-Lm-liB" secondAttribute="leadingMargin" id="eNL-bh-aGw"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="D5I-N4-DVs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Xed-l3-eJa">
+                            <connections>
+                                <action selector="saveButtonDidTap:" destination="ly5-ES-Bq6" id="PPE-gR-MNH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ageTextField" destination="9a0-vP-HFg" id="VFa-Go-4r6"/>
+                        <outlet property="nameTextField" destination="hV6-mh-3sb" id="9iR-lc-QnS"/>
+                        <outlet property="saveButton" destination="Xed-l3-eJa" id="2Ef-gW-8gx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wgs-Vw-emq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

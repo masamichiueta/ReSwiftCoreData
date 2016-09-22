@@ -7,29 +7,62 @@
 //
 
 import UIKit
+import ReSwift
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, StoreSubscriber{
 
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var user: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        appDelegate.mainStore.subscribe(self)
     }
-    */
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        appDelegate.mainStore.unsubscribe(self)
+    }
+    
+    func newState(state: AppState) {
+        
+        guard let currentUser = state.users.filter({
+            $0.objectID.isEqual(self.user.objectID)
+        }).first else {
+            return
+        }
 
+        self.user = currentUser
+        
+        if self.user.name == "" || self.user.age < 0 {
+            self.saveButton.isEnabled = false
+        } else {
+            self.saveButton.isEnabled = true
+            self.nameTextField.text = self.user.name
+            self.ageTextField.text = "\(self.user.age)"
+        }
+    }
+    
+    @IBAction func saveButtonDidTap(_ sender: AnyObject) {
+        appDelegate.saveContext()
+        let _ = self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func nameTextFieldEditingChanged(_ sender: UITextField) {
+        self.user.name = sender.text
+        appDelegate.mainStore.dispatch(UpdateUser(user: self.user))
+    }
+    
+    
+    @IBAction func ageTextFieldEditingChanged(_ sender: UITextField) {
+        self.user.age = Int16(sender.text!) ?? -1
+        appDelegate.mainStore.dispatch(UpdateUser(user: self.user))
+    }
 }
