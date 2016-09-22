@@ -16,9 +16,7 @@ struct AppReducer: Reducer {
         
         switch action {
         case let action as AddUser:
-            var users: [User] = state.users
-            users.append(action.user)
-            state.users = users
+            state.users.append(action.user)
         case let action as UpdateUser:
             
             let users = state.users.map({ user -> User in
