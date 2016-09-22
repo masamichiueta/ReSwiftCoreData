@@ -7,15 +7,19 @@
 //
 
 import ReSwift
+import CoreData
 
 struct AddUser: Action {
-    
     let user: User
+}
+
+struct UpdateUserName: Action {
+    let objectID: NSManagedObjectID
+    let name: String
     
 }
 
-struct UpdateUser: Action {
-    
-    let user: User
-    
+struct UpdateUserAge: Action {
+    let objectID: NSManagedObjectID
+    let age: Int16
 }

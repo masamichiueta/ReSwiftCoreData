@@ -45,9 +45,10 @@ class DetailViewController: UIViewController, StoreSubscriber{
             self.saveButton.isEnabled = false
         } else {
             self.saveButton.isEnabled = true
-            self.nameTextField.text = self.user.name
-            self.ageTextField.text = "\(self.user.age)"
         }
+        
+        self.nameTextField.text = self.user.name
+        self.ageTextField.text = self.user.age < 0 ? "" : "\(self.user.age)"
     }
     
     @IBAction func saveButtonDidTap(_ sender: AnyObject) {
@@ -56,13 +57,12 @@ class DetailViewController: UIViewController, StoreSubscriber{
     }
     
     @IBAction func nameTextFieldEditingChanged(_ sender: UITextField) {
-        self.user.name = sender.text
-        appDelegate.mainStore.dispatch(UpdateUser(user: self.user))
+        appDelegate.mainStore.dispatch(UpdateUserName(objectID: self.user.objectID, name: sender.text ?? ""))
     }
     
     
     @IBAction func ageTextFieldEditingChanged(_ sender: UITextField) {
-        self.user.age = Int16(sender.text!) ?? -1
-        appDelegate.mainStore.dispatch(UpdateUser(user: self.user))
+        let age = Int16(sender.text!) ?? -1
+        appDelegate.mainStore.dispatch(UpdateUserAge(objectID: self.user.objectID, age: age))
     }
 }
