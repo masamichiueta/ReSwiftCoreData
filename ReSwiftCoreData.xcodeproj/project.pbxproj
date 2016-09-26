@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		246605551D93C7BE008F78FD /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246605531D93C7BE008F78FD /* User+CoreDataClass.swift */; };
-		246605561D93C7BE008F78FD /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246605541D93C7BE008F78FD /* User+CoreDataProperties.swift */; };
 		24C8B0051D918D9200580EEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8B0041D918D9200580EEA /* AppDelegate.swift */; };
 		24C8B00A1D918D9200580EEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C8B0081D918D9200580EEA /* Main.storyboard */; };
 		24C8B00D1D918D9200580EEA /* ReSwiftCoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24C8B00B1D918D9200580EEA /* ReSwiftCoreData.xcdatamodeld */; };
@@ -16,6 +14,10 @@
 		24C8B0121D918D9200580EEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24C8B0101D918D9200580EEA /* LaunchScreen.storyboard */; };
 		24C8B01A1D918F2E00580EEA /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8B0191D918F2E00580EEA /* TableViewController.swift */; };
 		24C8B01C1D918FF300580EEA /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C8B01B1D918FF300580EEA /* DetailViewController.swift */; };
+		24D74C5A1D997B0C0003456C /* ManagedUser+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D74C581D997B0C0003456C /* ManagedUser+CoreDataClass.swift */; };
+		24D74C5B1D997B0C0003456C /* ManagedUser+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D74C591D997B0C0003456C /* ManagedUser+CoreDataProperties.swift */; };
+		24D74C5D1D997B160003456C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D74C5C1D997B160003456C /* User.swift */; };
+		24D74C611D997E460003456C /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D74C601D997E460003456C /* UserRepository.swift */; };
 		24EB2B3B1D94190B0004B4CB /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB2B3A1D94190B0004B4CB /* State.swift */; };
 		24EB2B3D1D94195C0004B4CB /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB2B3C1D94195C0004B4CB /* Action.swift */; };
 		24EB2B3F1D9419B30004B4CB /* Reducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24EB2B3E1D9419B30004B4CB /* Reducer.swift */; };
@@ -24,8 +26,6 @@
 
 /* Begin PBXFileReference section */
 		00605B26215434251D4BF565 /* Pods_ReSwiftCoreData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReSwiftCoreData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		246605531D93C7BE008F78FD /* User+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		246605541D93C7BE008F78FD /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		24C8B0011D918D9200580EEA /* ReSwiftCoreData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReSwiftCoreData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24C8B0041D918D9200580EEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24C8B0091D918D9200580EEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +35,10 @@
 		24C8B0131D918D9200580EEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24C8B0191D918F2E00580EEA /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		24C8B01B1D918FF300580EEA /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		24D74C581D997B0C0003456C /* ManagedUser+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedUser+CoreDataClass.swift"; sourceTree = "<group>"; };
+		24D74C591D997B0C0003456C /* ManagedUser+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ManagedUser+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		24D74C5C1D997B160003456C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		24D74C601D997E460003456C /* UserRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		24EB2B3A1D94190B0004B4CB /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		24EB2B3C1D94195C0004B4CB /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		24EB2B3E1D9419B30004B4CB /* Reducer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reducer.swift; sourceTree = "<group>"; };
@@ -83,8 +87,9 @@
 		24C8B0031D918D9200580EEA /* ReSwiftCoreData */ = {
 			isa = PBXGroup;
 			children = (
-				246605531D93C7BE008F78FD /* User+CoreDataClass.swift */,
-				246605541D93C7BE008F78FD /* User+CoreDataProperties.swift */,
+				24D74C641D9987630003456C /* Redux */,
+				24D74C631D9987530003456C /* Data */,
+				24D74C621D9987480003456C /* Models */,
 				24C8B0041D918D9200580EEA /* AppDelegate.swift */,
 				24C8B0081D918D9200580EEA /* Main.storyboard */,
 				24C8B00E1D918D9200580EEA /* Assets.xcassets */,
@@ -93,11 +98,36 @@
 				24C8B00B1D918D9200580EEA /* ReSwiftCoreData.xcdatamodeld */,
 				24C8B0191D918F2E00580EEA /* TableViewController.swift */,
 				24C8B01B1D918FF300580EEA /* DetailViewController.swift */,
+			);
+			path = ReSwiftCoreData;
+			sourceTree = "<group>";
+		};
+		24D74C621D9987480003456C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				24D74C581D997B0C0003456C /* ManagedUser+CoreDataClass.swift */,
+				24D74C591D997B0C0003456C /* ManagedUser+CoreDataProperties.swift */,
+				24D74C5C1D997B160003456C /* User.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		24D74C631D9987530003456C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				24D74C601D997E460003456C /* UserRepository.swift */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		24D74C641D9987630003456C /* Redux */ = {
+			isa = PBXGroup;
+			children = (
 				24EB2B3A1D94190B0004B4CB /* State.swift */,
 				24EB2B3C1D94195C0004B4CB /* Action.swift */,
 				24EB2B3E1D9419B30004B4CB /* Reducer.swift */,
 			);
-			path = ReSwiftCoreData;
+			name = Redux;
 			sourceTree = "<group>";
 		};
 		6D02EEF5EDC375E8214127DE /* Pods */ = {
@@ -235,13 +265,15 @@
 			files = (
 				24C8B00D1D918D9200580EEA /* ReSwiftCoreData.xcdatamodeld in Sources */,
 				24C8B0051D918D9200580EEA /* AppDelegate.swift in Sources */,
+				24D74C611D997E460003456C /* UserRepository.swift in Sources */,
+				24D74C5A1D997B0C0003456C /* ManagedUser+CoreDataClass.swift in Sources */,
 				24EB2B3B1D94190B0004B4CB /* State.swift in Sources */,
-				246605561D93C7BE008F78FD /* User+CoreDataProperties.swift in Sources */,
 				24C8B01A1D918F2E00580EEA /* TableViewController.swift in Sources */,
 				24EB2B3F1D9419B30004B4CB /* Reducer.swift in Sources */,
 				24EB2B3D1D94195C0004B4CB /* Action.swift in Sources */,
+				24D74C5B1D997B0C0003456C /* ManagedUser+CoreDataProperties.swift in Sources */,
+				24D74C5D1D997B160003456C /* User.swift in Sources */,
 				24C8B01C1D918FF300580EEA /* DetailViewController.swift in Sources */,
-				246605551D93C7BE008F78FD /* User+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

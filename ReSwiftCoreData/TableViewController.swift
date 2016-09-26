@@ -11,11 +11,18 @@ import ReSwift
 
 class TableViewController: UITableViewController, StoreSubscriber {
 
-    var users: [User]!
+    var users: [User] = []
+    var userRepository: UserRepository!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userRepository = appDelegate.userRepository
         
+        self.userRepository.fetchUsers(completionHandler: { users, error in
+            if error == nil {
+                appDelegate.mainStore.dispatch(FetchUser(users: users!))
+            }
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,10 +36,8 @@ class TableViewController: UITableViewController, StoreSubscriber {
     }
     
     func newState(state: AppState) {
-        
         self.users = state.users
         self.tableView.reloadData()
-
     }
 
 
@@ -60,14 +65,14 @@ class TableViewController: UITableViewController, StoreSubscriber {
 
 
     @IBAction func addButtonDidTap(_ sender: AnyObject) {
-        let user = User(context: appDelegate.persistentContainer.viewContext)
-        user.name = "Albert Einstein"
-        user.age = 78
-        appDelegate.saveContext()
+        let user = User(name: "Albert Einstein", age: 78)
         
-        //Dispatch Action
-        appDelegate.mainStore.dispatch(AddUser(user: user))
-        
+        self.userRepository.createUser(user: user, completionHandler: { user, error in
+            if error == nil {
+                //Dispatch Action
+                appDelegate.mainStore.dispatch(AddUser(user: user!))
+            }
+        })
     }
 
     // MARK: - Navigation
@@ -75,6 +80,7 @@ class TableViewController: UITableViewController, StoreSubscriber {
         if segue.identifier == "Show" {
             let vc = segue.destination as! DetailViewController
             vc.user = self.users[self.tableView.indexPathForSelectedRow!.row]
+            vc.userRepository = self.userRepository
         }
     }
 

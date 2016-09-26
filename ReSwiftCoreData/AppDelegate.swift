@@ -19,14 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     var mainStore: Store<AppState>!
+    
+    var userRepository: UserRepository!
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let users = User.fetch(moc: persistentContainer.viewContext)
-        mainStore = Store<AppState>(reducer: AppReducer(), state: AppState(users: users))
-        
+        userRepository = UserRepository(context: persistentContainer.viewContext)
+        self.mainStore = Store<AppState>(reducer: AppReducer(), state: AppState())        
         return true
     }
 

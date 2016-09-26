@@ -16,6 +16,7 @@ class DetailViewController: UIViewController, StoreSubscriber{
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var user: User!
+    var userRepository: UserRepository!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +35,7 @@ class DetailViewController: UIViewController, StoreSubscriber{
     func newState(state: AppState) {
         
         guard let currentUser = state.users.filter({
-            $0.objectID.isEqual(self.user.objectID)
+            $0.objectID == self.user.objectID
         }).first else {
             return
         }
@@ -52,17 +53,20 @@ class DetailViewController: UIViewController, StoreSubscriber{
     }
     
     @IBAction func saveButtonDidTap(_ sender: AnyObject) {
-        appDelegate.saveContext()
-        let _ = self.navigationController?.popViewController(animated: true)
+        self.userRepository.updateUser(user: self.user, completionHandler: { user, error in
+            DispatchQueue.main.async {
+                let _ = self.navigationController?.popViewController(animated: true)
+            }
+        })
     }
     
     @IBAction func nameTextFieldEditingChanged(_ sender: UITextField) {
-        appDelegate.mainStore.dispatch(UpdateUserName(objectID: self.user.objectID, name: sender.text ?? ""))
+        appDelegate.mainStore.dispatch(UpdateUserName(objectID: self.user.objectID!, name: sender.text ?? ""))
     }
     
     
     @IBAction func ageTextFieldEditingChanged(_ sender: UITextField) {
-        let age = Int16(sender.text!) ?? -1
-        appDelegate.mainStore.dispatch(UpdateUserAge(objectID: self.user.objectID, age: age))
+        let age = Int(sender.text!) ?? -1
+        appDelegate.mainStore.dispatch(UpdateUserAge(objectID: self.user.objectID!, age: age))
     }
 }

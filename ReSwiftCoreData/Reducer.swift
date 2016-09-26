@@ -15,14 +15,20 @@ struct AppReducer: Reducer {
         var state = state ?? AppState()
         
         switch action {
+        case let action as FetchUser:
+            state.users = action.users
+
         case let action as AddUser:
             state.users.append(action.user)
             
         case let action as UpdateUserName:
+            
             let users = state.users.map({ user -> User in
                 
-                if user.objectID.isEqual(action.objectID) {
-                    user.name = action.name
+                if let objectID = user.objectID, objectID == action.objectID {
+                    
+                    return User(objectID: objectID, name: action.name, age: user.age)
+
                 }
                 
                 return user
@@ -33,8 +39,8 @@ struct AppReducer: Reducer {
         case let action as UpdateUserAge:
             let users = state.users.map({ user -> User in
                 
-                if user.objectID.isEqual(action.objectID) {
-                    user.age = action.age
+                if let objectID = user.objectID, objectID == action.objectID {
+                    return User(objectID: objectID, name: user.name, age: action.age)
                 }
                 
                 return user
