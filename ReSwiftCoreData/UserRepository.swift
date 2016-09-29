@@ -60,7 +60,7 @@ struct UserRepository {
                 
                 let user = managedUser.toUser()
                 completionHandler?(user, nil)
-
+                
             } catch {
                 completionHandler?(nil, RepositoryError.fail)
             }

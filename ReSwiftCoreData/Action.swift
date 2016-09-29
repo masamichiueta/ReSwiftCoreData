@@ -19,7 +19,6 @@ struct AddUser: Action {
 struct UpdateUserName: Action {
     let objectID: String
     let name: String
-    
 }
 
 struct UpdateUserAge: Action {

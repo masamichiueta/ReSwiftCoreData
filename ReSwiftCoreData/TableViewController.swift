@@ -10,7 +10,7 @@ import UIKit
 import ReSwift
 
 class TableViewController: UITableViewController, StoreSubscriber {
-
+    
     var users: [User] = []
     var userRepository: UserRepository!
     
@@ -39,20 +39,20 @@ class TableViewController: UITableViewController, StoreSubscriber {
         self.users = state.users
         self.tableView.reloadData()
     }
-
-
+    
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-
+        
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         return self.users.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
@@ -62,8 +62,8 @@ class TableViewController: UITableViewController, StoreSubscriber {
         
         return cell
     }
-
-
+    
+    
     @IBAction func addButtonDidTap(_ sender: AnyObject) {
         let user = User(name: "Albert Einstein", age: 78)
         
@@ -74,7 +74,7 @@ class TableViewController: UITableViewController, StoreSubscriber {
             }
         })
     }
-
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Show" {
@@ -83,6 +83,6 @@ class TableViewController: UITableViewController, StoreSubscriber {
             vc.userRepository = self.userRepository
         }
     }
-
-
+    
+    
 }

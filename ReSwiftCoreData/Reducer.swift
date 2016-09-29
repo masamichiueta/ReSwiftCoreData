@@ -26,9 +26,7 @@ struct AppReducer: Reducer {
             let users = state.users.map({ user -> User in
                 
                 if let objectID = user.objectID, objectID == action.objectID {
-                    
                     return User(objectID: objectID, name: action.name, age: user.age)
-
                 }
                 
                 return user

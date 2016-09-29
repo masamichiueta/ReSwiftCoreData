@@ -10,7 +10,7 @@ import UIKit
 import ReSwift
 
 class DetailViewController: UIViewController, StoreSubscriber{
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -39,7 +39,7 @@ class DetailViewController: UIViewController, StoreSubscriber{
         }).first else {
             return
         }
-
+        
         self.user = currentUser
         
         if self.user.name == "" || self.user.age < 0 {
