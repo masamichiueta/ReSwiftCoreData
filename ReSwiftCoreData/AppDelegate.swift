@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         userRepository = UserRepository(context: persistentContainer.viewContext)
-        self.mainStore = Store<AppState>(reducer: AppReducer(), state: AppState())
+        self.mainStore = Store<AppState>(reducer: appReducer, state: AppState())
         return true
     }
     

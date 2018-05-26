@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  AppState.swift
 //  ReSwiftCoreData
 //
 //  Created by UetaMasamichi on 9/22/16.
